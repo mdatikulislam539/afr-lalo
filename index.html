@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atikul Dev Apps — Free Download</title>
+<meta name="description" content="Download Mega Atk VPN, JAS Tunnel and Atk PDF directly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+  :root{
+    --bg:#0A0F1C; --text:#EEF3FF; --muted:#A9B6D3; --faint:#8090B0;
+    --accent:#4DC9FF; --accent-hi:#7FD8FF;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    min-height:100vh; background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    overflow-x:hidden;
+  }
+  a{color:var(--accent-hi)}
+  a:hover{color:#B5E9FF}
+
+  /* background glow */
+  .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0}
+  .orb.one{top:-160px;right:-120px;width:520px;height:520px;background:#1E5BFF;opacity:.22;filter:blur(110px);animation:drift 14s ease-in-out infinite}
+  .orb.two{bottom:-200px;left:-160px;width:560px;height:560px;background:#18B6E8;opacity:.16;filter:blur(120px);animation:drift 18s ease-in-out infinite reverse}
+
+  .wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 20px}
+
+  header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:28px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand-mark{width:40px;height:40px;border-radius:12px;background:var(--accent);color:var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px}
+  .brand-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px}
+  .contact{font-size:15px;text-decoration:none;padding:10px 16px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#D6E2FF}
+
+  .hero{padding:56px 0 48px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+  .badge{font-size:14px;font-weight:600;letter-spacing:1px;color:var(--accent-hi);padding:6px 14px;border-radius:999px;background:rgba(77,201,255,.1);border:1px solid rgba(77,201,255,.3)}
+  .hero h1{margin:0;font-size:clamp(34px,6vw,60px);line-height:1.15;font-weight:700;max-width:760px}
+  .hero p{margin:0;font-size:18px;line-height:1.6;color:var(--muted);max-width:560px}
+
+  .apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;padding-bottom:80px}
+  .card{
+    display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;
+    padding:36px 28px 30px;border-radius:24px;
+    background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);
+    animation:rise .8s cubic-bezier(.2,.7,.2,1) both;
+    transition:transform .35s ease,border-color .35s ease,background .35s ease;
+  }
+  .card:nth-child(1){animation-delay:.15s}
+  .card:nth-child(2){animation-delay:.3s}
+  .card:nth-child(3){animation-delay:.45s}
+  .card:nth-child(4){animation-delay:.6s}
+  .card:hover{transform:translateY(-6px);border-color:rgba(77,201,255,.55);background:rgba(255,255,255,.06)}
+
+  .logo{width:96px;height:96px;border-radius:26px;display:flex;align-items:center;justify-content:center;overflow:hidden;animation:floaty 4s ease-in-out infinite}
+  .card:nth-child(2) .logo{animation-delay:.6s}
+  .card:nth-child(3) .logo{animation-delay:1.2s}
+  .logo img{width:100%;height:100%;object-fit:cover}
+
+  .card h2{margin:6px 0 0;font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700}
+  .card p{margin:0;font-size:16px;line-height:1.55;color:var(--muted)}
+  .meta{font-size:13px;color:var(--faint)}
+
+  .dl{
+    margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    min-height:52px;padding:0 28px;border-radius:14px;
+    background:var(--accent);color:var(--bg);font-size:17px;font-weight:700;text-decoration:none;
+    animation:ring 1.8s ease-out infinite;
+    transition:transform .2s ease,background .2s ease;
+  }
+  .dl:hover{transform:translateY(-2px);background:var(--accent-hi);color:var(--bg)}
+  .dl:active{transform:scale(.97)}
+  .dl:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+  footer{border-top:1px solid rgba(255,255,255,.08);padding:28px 0 36px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14px;color:var(--faint)}
+
+  .toast{
+    position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;
+    display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:14px;
+    background:var(--text);color:var(--bg);font-size:16px;font-weight:600;
+    box-shadow:0 12px 40px rgba(0,0,0,.4);transition:opacity .35s ease,transform .35s ease;z-index:10;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
+  @keyframes ring{0%{box-shadow:0 0 0 0 rgba(77,201,255,.45)}100%{box-shadow:0 0 0 18px rgba(77,201,255,0)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="orb one" aria-hidden="true"></div>
+<div class="orb two" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="brand-mark">AD</div>
+      <span class="brand-name">Atikul Dev</span>
+    </div>
+    
+  </header>
+
+  <section class="hero">
+    <span class="badge">DOWNLOAD · DIRECT APK</span>
+    <h1>All our apps in one place</h1>
+    <p>Tap the download button under any app — your download starts instantly.</p>
+  </section>
+
+  <!--
+    ===== How to add / edit an app =====
+    Each <article class="card"> is one app.
+    - Logo: replace the <svg> inside .logo with <img src="your-logo.png" alt="App name">
+    - Download link: put your GitHub Release link in href="..."
+      e.g. https://github.com/USERNAME/REPO/releases/latest/download/app.apk
+    - New app: copy a whole <article> block and paste it below
+  -->
+  <section class="apps" aria-label="App list">
+
+    <article class="card">
+      <div class="logo">
+  <img src="images/logo.png" alt="AF V2RAY VIP">
+</div>
+      <h2>🔰 AF V2RAY VIP🔰</h2>
+      <p>Fast and secure VPN</p>
+      <span class="meta">80 mb</span>
+      <a class="dl" href="https://github.com/frstechdeveloper-hub/afv2ray/releases/download/1.0/af.v2.ray.apk" download>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
+        Download
+      </a>
+    </article>
+
+    <article class="card">
+   <div class="logo">
+<img src="images/lalo.png" alt="LU LU V2RAY VIP">
+</div>
+      <h2>LU LU V2RAY VIP</h2>
+      <p>Secure tunnel VPN</p>
+      <span class="meta">85 mb</span>
+      <a class="dl" href="https://github.com/mdatikulislam539/lalo-apk/releases/download/v1/app-standard-release.apk" download>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
+        Download
+      </a>
+    </article>
+
+  
+
+  </section>
+
+  <footer>
+    <span>© <span id="year">2026</span> Atikul Dev</span>
+    
+  </footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E8F7E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>
+  Download started
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var toast = document.getElementById('toast'), timer;
+  document.querySelectorAll('.dl').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      toast.classList.add('show');
+      clearTimeout(timer);
+      timer = setTimeout(function () { toast.classList.remove('show'); }, 3000);
+    });
+  });
+</script>
+</body>
+</html>
